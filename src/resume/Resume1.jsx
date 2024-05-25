@@ -1,4 +1,4 @@
-  import React, { useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import html2canvas from 'html2canvas';
@@ -14,12 +14,26 @@ export const Resume1 = () => {
 
   const handleSave = () => {
     const input = resumeRef.current;
-    html2canvas(input, { scale: 2 }).then((canvas) => {
+    html2canvas(input, { scale: 2, scrollY: -window.scrollY }).then((canvas) => {
       const imgData = canvas.toDataURL('image/png');
       const pdf = new jsPDF('p', 'mm', 'a4');
       const pdfWidth = pdf.internal.pageSize.getWidth();
-      const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
-      pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+      const pdfHeight = pdf.internal.pageSize.getHeight();
+      const imgHeight = (canvas.height * pdfWidth) / canvas.width;
+      
+      let heightLeft = imgHeight;
+      let position = 0;
+
+      pdf.addImage(imgData, 'PNG', 0, position, pdfWidth, imgHeight);
+      heightLeft -= pdfHeight;
+
+      while (heightLeft > 0) {
+        position = heightLeft - imgHeight;
+        pdf.addPage();
+        pdf.addImage(imgData, 'PNG', 0, position, pdfWidth, imgHeight);
+        heightLeft -= pdfHeight;
+      }
+
       pdf.save(`${fileName}.pdf`);
     }).catch((err) => console.error('Error creating PDF:', err));
   };
@@ -28,63 +42,49 @@ export const Resume1 = () => {
     <div className="container">
       <div className="row">
         <div
-          className="col-sm-8 border mt-3"
-          style={{ paddingLeft: "12px", marginRight: "" }}
+          className="col-sm-12 mt-3"
+          style={{ paddingLeft: "12px" }}
           ref={resumeRef}
         >
           <div className="row p-2" style={{ backgroundColor: "aquamarine" }}>
-            <div className="col-sm-4 d-flex  flex-column">
-              <h5>{personalinfo.firstName}</h5>
-              
+            <div className="col-sm-4 d-flex flex-column">
+              <h5>{personalinfo.firstName} {personalinfo.lastName}</h5>
             </div>
-            <div>
+            <div className="col-sm-8">
               <p>{personalinfo.objective}</p>
             </div>
-            <div className="col-sm-4"></div>
-            <div className="col-sm-4"></div>
           </div>
 
           <div className="row mt-3 p-2">
             <div className="col-sm-5">
               <h6>Personal Details</h6>
               <ul>
-                <b><li>Email</li></b>
-                {personalinfo.email}
-                <b><li>Mobile</li></b>
-                {personalinfo.mobile}
-                <b><li>Address</li></b>
-                {personalinfo.address}
-                <b><li>Country</li></b>
-                {personalinfo.state}
+                <b><li>Email:</li></b> {personalinfo.email}
+                <b><li>Mobile:</li></b> {personalinfo.mobile}
+                <b><li>Address:</li></b> {personalinfo.address}
+                <b><li>Country:</li></b> {personalinfo.state}
               </ul>
               <div>
-                    <h4 style={{ color: "aquamarine" }}>Skills</h4>
-                  </div>
+                <h4 style={{ color: "aquamarine" }}>Skills</h4>
+              </div>
               <div className="row">
                 {Object.entries(skillList).map(([id, data]) => (
                   <div key={id}>
                     <ul>
                       <li>{data.skill}</li>
                     </ul>
-                    
                   </div>
                 ))}
               </div>
-
-              
             </div>
             <div className="col-sm-7">
               <div className="row">
-                <div className="col-sm-10">
+                <div className="col-sm-12">
                   <h4 style={{ color: "aquamarine" }}>Work Experience</h4>
+                  <hr />
                 </div>
-                <hr />
-                <div className="col-sm-1"></div>
-                <div className="col-sm-1"></div>
               </div>
-
               <div className="row">
-                <h4>Work Experience List</h4>
                 {Object.entries(experiences).map(([id, experience]) => (
                   <div key={id}>
                     <h5>Experience {id}</h5>
@@ -95,15 +95,11 @@ export const Resume1 = () => {
                   </div>
                 ))}
               </div>
-
               <div className="row mt-5">
-                <div className="col-sm-10">
+                <div className="col-sm-12">
+                  <h4 style={{ color: "aquamarine" }}>Education</h4>
                   <div>
-                    <h4 style={{ color: "aquamarine" }}>Education</h4>
-                  </div>
-
-                  <div>
-                    <b>Graduation - </b>{educationData.graduation===''?'Graducation':`${educationData.graduation}`}
+                    <b>Graduation - </b>{educationData.graduation === '' ? 'Graduation' : `${educationData.graduation}`}
                   </div>
                   <div>
                     <b>University - </b>{educationData.university}
@@ -115,21 +111,13 @@ export const Resume1 = () => {
                     <div>{educationData.startYear} - {educationData.endYear}</div>
                   </div>
                 </div>
-                <div className="col-sm-1"></div>
-                <div className="col-sm-1"></div>
-              </div>
-
-              <div className="row mt-5">
-                
-                <div className="col-sm-1"></div>
-                <div className="col-sm-1"></div>
               </div>
             </div>
           </div>
         </div>
+
         <div
-          className="col-sm-4"
-          style={{ paddingLeft: "140px", marginTop: "150px" }}
+          className="col-sm-12 d-flex justify-content-center mt-3"
         >
           <div>
             <h5>Create File Name</h5>
@@ -138,22 +126,17 @@ export const Resume1 = () => {
               value={fileName}
               onChange={(e) => setFileName(e.target.value)}
             />
-            <div className="col-sm-3 d-flex mt-2">
-              <button
-                className="form-control me-3"
-                style={{ border: "2px solid blue" }}
-              >
+            <div className="d-flex mt-2">
+              <button className="form-control p-2 me-3">
                 <Link to="/skills" className="text-decoration-none">
                   Back
                 </Link>
               </button>
-
               <button className="btn bg-primary" onClick={handleSave}>
                 Save
               </button>
             </div>
           </div>
-          
         </div>
       </div>
     </div>

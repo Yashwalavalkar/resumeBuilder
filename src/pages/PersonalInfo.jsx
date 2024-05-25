@@ -57,27 +57,7 @@ export const PersonalInfo = () => {
         <div className="col-sm-8">
           <div className="row">
             <div className="col-sm-3"></div>
-            <div>
-            <div className="d-flex  align-items-center mt-3 justify-content-evenly mb-2 image-upload-container">
-        <div className="image-preview" >
-          {preview && <img src={preview} style={{height:'100px',borderRadius:'30px'}}alt="Image Preview" />}
-        </div>
-        <input
-          type="file"
-          accept="image/*"
-          onChange={handleImageChange}
-          style={{ display: 'none' }}
-          id="fileInput"
-        />
-        <label htmlFor="fileInput" className="btn btn-primary m-3">
-          Upload Image
-        </label>
-      </div>
-
-      
-    </div>
-
-            <div className="row">
+            <div className="row mt-4">
               <div className="col-sm-3"></div>
               <div className="col-sm-3">
                 <label htmlFor="firstName">First Name</label>

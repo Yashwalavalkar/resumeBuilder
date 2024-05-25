@@ -10,7 +10,7 @@ export const Templete = () => {
   };
 
   return (
-    <div className="container">
+    <div className="container p-1">
       <div className="row justify-content-center" style={{ marginTop: "100px" }}>
         {["templete1", "templete2", "templete3", "templete4"].map((template, index) => (
           <div

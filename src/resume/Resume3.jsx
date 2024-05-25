@@ -29,7 +29,7 @@ export const Resume3 = () => {
     <div>
       <div className='row'>
         <div className='col-sm-6 border mt-3' style={{ paddingLeft: '40px', marginRight: "" }} ref={resumeRef}>
-          <div className='row '>
+          <div className='row bg-success text-white'>
             <div className='col-sm-6'>
               <div><h3>{personalinfo.firstName}</h3></div>
               
@@ -64,7 +64,7 @@ export const Resume3 = () => {
             <hr></hr>
             {Object.entries(experiences).map(([id, experience]) => (
               <div key={id}>
-                <h5 className='text-primary'>Experience {id}</h5>
+                <h5 className='text-success'>Experience {id}</h5>
                 <p><b>Job Title: </b>{experience.jobTitle}</p>
                 <p><b>Organization Name: </b>{experience.organizationName}</p>
                 <p><b>Start Year: </b>{experience.startYear}</p>
@@ -93,7 +93,7 @@ export const Resume3 = () => {
             </div>
             <div className='col-sm-6'>
             </div>
-            <div><h4 className='text-success'>Skills</h4></div>
+            <div className='mt-2'><h4 className='text-success'>Skills</h4></div>
             <div>
             <div className="row">
                 {Object.entries(skillList).map(([id, data]) => (

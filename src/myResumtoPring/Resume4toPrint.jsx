@@ -29,14 +29,14 @@ export const Resume4toPrint = () => {
     <div>
       <div className="row">
         <div
-          className="col-sm-10 border mt-3"
+          className="col-sm-12 border mt-3"
           style={{ paddingLeft: "40px" }}
           ref={resumeRef}
         >
-          <div className="row">
+          <div className="row bg-primary text-white">
             <div className="col-sm-6">
               <div>
-                <h3 className="text-primary">{personalinfo.firstName}</h3>
+                <h3 className="">{personalinfo.firstName} {personalinfo.lastName}</h3>
               </div>
               
             </div>
@@ -108,10 +108,6 @@ export const Resume4toPrint = () => {
             </div>
             <div className="bg-success container mt-2" style={{ height: "10px" }}></div>
           </div>
-        </div>
-
-        <div className="col-sm-2" style={{ paddingLeft: "200px", marginTop: "150px" }}>
-          
         </div>
       </div>
     </div>

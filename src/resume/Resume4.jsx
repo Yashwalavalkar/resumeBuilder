@@ -33,10 +33,10 @@ export const Resume4 = () => {
           style={{ paddingLeft: "40px" }}
           ref={resumeRef}
         >
-          <div className="row">
+          <div className="row bg-primary text-white">
             <div className="col-sm-6">
               <div>
-                <h3 className="text-primary">{personalinfo.firstName}</h3>
+                <h3 className="">{personalinfo.firstName} {personalinfo.lastName}</h3>
               </div>
               
             </div>
