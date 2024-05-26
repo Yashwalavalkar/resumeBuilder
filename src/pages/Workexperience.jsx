@@ -27,11 +27,12 @@ export const Workexperience = () => {
 // Workexperience.js
 import React, { useState } from 'react';
 import { SideComponent } from './SideComponent';
-import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { experienceData } from '../redux/action';
+import { Link } from 'react-router-dom';  //use react routing here
+import { useDispatch } from 'react-redux'; //dispatch method
+import { experienceData } from '../redux/action'; 
 
 export const Workexperience = () => {
+  //dispathch the action
   const dispatch = useDispatch();
 
   const [experiences, setExperiences] = useState([{ id: 1, jobTitle: '', startYear: '', organizationName: '', endYear: '' }]);
