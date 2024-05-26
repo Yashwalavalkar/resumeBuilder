@@ -2,12 +2,18 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { templete } from "../redux/action";
+<<<<<<< HEAD
 
 // The Templete component allows users to select a resume template
 export const Templete = () => {
   const dispatch = useDispatch();
 
 // Function to handle the template selection and dispatch the selected template to the Redux store
+=======
+export const Templete = () => {
+  const dispatch = useDispatch();
+
+>>>>>>> 844b61773401de169753446cc89df342540a4cf2
   const handleLink = (templeteData) => {
     dispatch(templete(templeteData));
   };
@@ -20,8 +26,11 @@ export const Templete = () => {
             key={index}
             className="col-12 col-sm-6 col-md-4 col-lg-3 mb-4 d-flex justify-content-center"
           >
+<<<<<<< HEAD
 
             {/* Link to navigate to the personal information form and set the selected template */}
+=======
+>>>>>>> 844b61773401de169753446cc89df342540a4cf2
             <div className="template-card">
               <Link
                 onClick={() => handleLink(template)}
@@ -30,7 +39,10 @@ export const Templete = () => {
               >
                 <h4 className="temp">Use Template</h4>
               </Link>
+<<<<<<< HEAD
               {/* Display the image of the template */}
+=======
+>>>>>>> 844b61773401de169753446cc89df342540a4cf2
               <img
                 src={
                   index === 0
