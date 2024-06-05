@@ -1,8 +1,6 @@
 import React, { useRef, useState } from "react";
-import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-import html2canvas from "html2canvas";
-import jsPDF from "jspdf";
+
 
 //Here the selected resume is to displayed
 export const Resume1toPrint = () => {
