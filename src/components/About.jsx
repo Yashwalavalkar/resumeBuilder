@@ -31,7 +31,7 @@ export const About = () => {
               <b>Share With Your Friend</b>
             </h6>
           </div>
-          {/* here provide the links about the project that navigate to other pages like instgram github email that you can share */}
+          {/* here provide the links about the about project that navigate to other pages like instgram github email that you can share */}
           <div className="row">
             <div className="d-flex">
               <div className="">
