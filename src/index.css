@@ -110,3 +110,9 @@ code {
   border-radius: 44px;
   padding: 5px;
 }
+/* Hide the toggler button by default on larger screens */
+@media (min-width: 992px) {
+  .navbar-toggler {
+    display: none !important;
+  }
+}
