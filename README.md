@@ -14,10 +14,10 @@ See the section about running tests for more information.
 Use npm run build to build the project for deployment.
 
 # Deployment
-Project Link - https://preeminent-banoffee-057863.netlify.app
+Project Link - https://admirable-praline-4c0d3a.netlify.app
 
 # Additional Information
-Video
+Video -  https://www.youtube.com/watch?v=wYPhnJ_JFrg
 For more information about the website, watch the video:
 
 
