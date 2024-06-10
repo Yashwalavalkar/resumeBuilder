@@ -80,17 +80,12 @@ export const About = () => {
           
         </div>
 
-        <div className="col-lg-5">
-          <img
-            className=""
+        <div className="col-lg-5 d-flex align-items-center">
+        <img
+            class="img-fluid custom-img"
             src="https://thumbs.dreamstime.com/b/designers-concept-flat-design-employees-working-office-scene-man-woman-creating-new-product-development-interface-242916908.jpg"
             alt="Office Scene"
-            style={{
-              height: "250px",
-              marginTop: "150px",
-              borderRadius: "33px",
-            }}
-          ></img>
+        />
         </div>
       </div>
     </div>
